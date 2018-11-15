@@ -124,4 +124,13 @@
   <data name="vilna-borotba-11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vilna-borotba-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sport_pricoli_foto_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sport_pricoli_foto_01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Без названия" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Без названия.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sport_pricoli_foto_14_glavnaja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sport_pricoli_foto_14_glavnaja.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

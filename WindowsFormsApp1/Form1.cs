@@ -13,16 +13,16 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
 
-
+  
     public partial class Form1 : MetroForm
     {
-        List<Wrestler> wrestlers = new List<Wrestler>();
+ 
         public Form1()
         {
             InitializeComponent();
         }
-
-    class Wrestler
+       static public List<Wrestler> wrestlers = new List<Wrestler>();
+        public class Wrestler
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -38,23 +38,26 @@ namespace WindowsFormsApp1
                 City=city;
                 Lot =lot;
             }
+
     }
         public void GetAllWrestlers()
         {
-            Form5 form = new Form5();
+            try
+            {
+ Form5 form = new Form5();
             for (int i = 0; i <wrestlers.Count; i+=2)
             {
             var m_label = new Label
             {
                 Name = "Label" + i.ToString(),
-                Text = wrestlers[i].Surname+" "+wrestlers[i].Surname[0]+".",
+                Text = wrestlers[i].Surname+" "+wrestlers[i].Name[0]+".",
                 Location = new Point { X = 6, Y = 40 },
             };
 
                 var m_label2 = new Label
                 {
                     Name = "Label" + (i + 1).ToString(),
-                    Text = wrestlers[i+1].Surname + " " + wrestlers[i+1].Surname[0] + ".",
+                    Text = wrestlers[i+1].Surname + " " + wrestlers[i+1].Name[0] + ".",
                     Location = new Point { X = m_label.Location.X, Y = m_label.Location.Y - 22 },
                };
 
@@ -78,23 +81,28 @@ namespace WindowsFormsApp1
 
                 var g_b = new GroupBox
             {
+                Name= "groupBox"+i.ToString(),
                 Text = String.Empty,
                 Location = new Point { X = 58, Y = i*50 },
                 Width = 162,
                 Height = 69
             };
-
                 g_b.Controls.AddRange(new Control[]{
-                    m_label,m_label2,m_radio,m_radio2
+                    m_label,m_label2,m_radio2,m_radio
                  });
-
-                form.Controls["metroPanel1"].Controls.AddRange(new Control[]
+                    form.Controls["metroPanel1"].Controls.AddRange(new Control[]
                 {
                     g_b
                 });
 
             }
             form.Show(); 
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please fill all area");
+            }
+
         }
 
         public bool IsDigit(string str)
@@ -111,7 +119,6 @@ namespace WindowsFormsApp1
         }
         private void metroButton2_Click(object sender, EventArgs e)
         {
-
             wrestlers.Add(new Wrestler(textBox1.Text,textBox2.Text, textBox3.Text, textBox4.Text));
 
             var m_textbox = new TextBox
@@ -194,30 +201,32 @@ namespace WindowsFormsApp1
 
         }
 
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-           PrintDocument printDoc = new PrintDocument();
-           printDoc.PrintPage += PrintPageHandler;
-           printDoc.Print();
-       }
-
         void PrintPageHandler(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawString("Привет", new Font("Arial", 14), Brushes.Black, 0, 0);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public bool CheckTwo(int count)
         {
-            SortWrestlers();
-            GetAllWrestlers();
+            for (int i = 0; i < 10; i++)
+            {
+            if (System.Math.Pow(count, i)%8==0)
+            {
+                    return true;
+            }
+            }
+            return false;
         }
+
+        List<Wrestler> free = new List<Wrestler>();
 
         void SortWrestlers()
         {
             try
             {
             Wrestler tmp;
+           if (CheckTwo(wrestlers.Count))
+           {
             for (int i = 0; i < wrestlers.Count-1 ; ++i)
             {
                 for (int j = 0; j < wrestlers.Count-1 ; ++j)
@@ -230,6 +239,14 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+          }
+                else
+                {
+                    for (int i = 0; i < wrestlers.Count; i++)
+                    {
+
+                    }
+                }
             }
             catch (Exception)
             {
@@ -257,6 +274,19 @@ namespace WindowsFormsApp1
         {
             Form2 form = new Form2();
             form.Show();
+        }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrintPage += PrintPageHandler;
+            printDoc.Print();
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            SortWrestlers();
+            GetAllWrestlers();
         }
     }
 

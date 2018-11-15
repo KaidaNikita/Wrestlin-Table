@@ -63,6 +63,26 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sport_pricoli_foto_01 {
+            get {
+                object obj = ResourceManager.GetObject("sport_pricoli_foto_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sport_pricoli_foto_14_glavnaja {
+            get {
+                object obj = ResourceManager.GetObject("sport_pricoli_foto_14_glavnaja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap vilna_borotba_1 {
             get {
                 object obj = ResourceManager.GetObject("vilna-borotba-1", resourceCulture);
@@ -76,6 +96,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap vilna_borotba_11 {
             get {
                 object obj = ResourceManager.GetObject("vilna-borotba-11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Без_названия {
+            get {
+                object obj = ResourceManager.GetObject("Без названия", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

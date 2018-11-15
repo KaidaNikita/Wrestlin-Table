@@ -132,5 +132,14 @@
   <ItemGroup>
     <None Include="Resources\vilna-borotba-1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Без названия.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sport_pricoli_foto_01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sport_pricoli_foto_14_glavnaja.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
