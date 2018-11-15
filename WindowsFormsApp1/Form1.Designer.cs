@@ -38,6 +38,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -50,7 +51,7 @@
             this.metroButton6 = new MetroFramework.Controls.MetroButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -137,11 +138,20 @@
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Location = new System.Drawing.Point(23, 30);
+            this.groupBox2.Location = new System.Drawing.Point(23, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(344, 90);
+            this.groupBox2.Size = new System.Drawing.Size(344, 84);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(312, 34);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(27, 19);
+            this.metroLabel4.TabIndex = 23;
+            this.metroLabel4.Text = "Lot";
             // 
             // metroLabel3
             // 
@@ -188,9 +198,9 @@
             this.metroButton1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.metroButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton1.Location = new System.Drawing.Point(373, 40);
+            this.metroButton1.Location = new System.Drawing.Point(373, 46);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(147, 24);
+            this.metroButton1.Size = new System.Drawing.Size(147, 18);
             this.metroButton1.TabIndex = 21;
             this.metroButton1.Text = "Print";
             this.metroButton1.UseSelectable = true;
@@ -199,7 +209,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(20, 589);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(486, 22);
@@ -217,9 +228,9 @@
             this.metroButton5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.metroButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.metroButton5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton5.Location = new System.Drawing.Point(373, 74);
+            this.metroButton5.Location = new System.Drawing.Point(373, 80);
             this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(147, 19);
+            this.metroButton5.Size = new System.Drawing.Size(147, 13);
             this.metroButton5.TabIndex = 23;
             this.metroButton5.Text = "Save table";
             this.metroButton5.UseSelectable = true;
@@ -230,9 +241,9 @@
             this.metroButton6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.metroButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.metroButton6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton6.Location = new System.Drawing.Point(373, 99);
+            this.metroButton6.Location = new System.Drawing.Point(373, 105);
             this.metroButton6.Name = "metroButton6";
-            this.metroButton6.Size = new System.Drawing.Size(147, 21);
+            this.metroButton6.Size = new System.Drawing.Size(147, 15);
             this.metroButton6.TabIndex = 24;
             this.metroButton6.Text = "Load table";
             this.metroButton6.UseSelectable = true;
@@ -256,14 +267,11 @@
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
-            // metroLabel4
+            // toolStripStatusLabel2
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(312, 34);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(27, 19);
-            this.metroLabel4.TabIndex = 23;
-            this.metroLabel4.Text = "Lot";
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(49, 17);
+            this.toolStripStatusLabel2.Text = "Max lot:";
             // 
             // Form1
             // 
@@ -315,6 +323,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 

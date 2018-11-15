@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Fill all blanks and press 'add wrestler' / When you fill all table press 'print table' to print tournament table / To remove wrestler from table press 'remove wrestler'");
+            MessageBox.Show("Sign up or if you alredy sign up - log in");
         }
     }
 

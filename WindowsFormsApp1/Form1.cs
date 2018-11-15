@@ -131,10 +131,18 @@ namespace WindowsFormsApp1
             }
             return true;
         }
+        int max = 0;
         private void MetroButton2_Click(object sender, EventArgs e)
         {
+
             wrestlers.Add(new Wrestler(textBox1.Text,textBox2.Text, textBox3.Text, textBox4.Text));
                  toolStripStatusLabel1.Text = "Count of wreslers:"+wrestlers.Count.ToString();
+            if (int.Parse(textBox4.Text)>max)
+            {
+                max = int.Parse(textBox4.Text);
+                toolStripStatusLabel2.Text ="Max lot:"+max.ToString();
+            }
+
             var m_textbox = new TextBox
             {
                 Text = textBox1.Text,
