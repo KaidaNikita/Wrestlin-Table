@@ -18,16 +18,21 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             Log_in form = new Log_in();
             form.ShowDialog();
         }
 
-        private void metroButton2_Click(object sender, EventArgs e)
+        private void MetroButton2_Click(object sender, EventArgs e)
         {
             Form4 form = new Form4();
             form.ShowDialog();
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Fill all blanks and press 'add wrestler' / When you fill all table press 'print table' to print tournament table / To remove wrestler from table press 'remove wrestler'");
         }
     }
 

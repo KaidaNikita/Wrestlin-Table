@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form5 : Form
+    public partial class Form5 : MetroForm
     {
 
       public Form5()
@@ -57,6 +58,9 @@ namespace WindowsFormsApp1
         }
             int temp_x = 250;
             int temp_y = 69;
+            int temp2_x;
+            int temp2_y;
+            int k = 0;
         public void NextStage(int smth)
         {
             for (int i = 0; i < winers.Count; i+=2)
@@ -92,17 +96,41 @@ namespace WindowsFormsApp1
                 Checked = false,
                 AutoSize = true,
                 Location = new Point { X = name2.Location.X + 100, Y = name2.Location.Y },
-            };
+            };              
+                GroupBox g_b = new GroupBox();
 
-            var g_b = new GroupBox
+             if (smth < wrestlers.Count / 4)
             {
-                Name = "groupBox" + i.ToString(),
+                 g_b = new GroupBox
+            {
+
+                    Name = "groupBox" + i.ToString(),
                 Text = String.Empty,
-                Location = new Point {X=temp_x,Y=temp_y }, //new Point { X = 300, Y =200},
+                Location = new Point {X=temp_x,Y=temp_y },
                 Width = 162,
                 Height = 69
             };
 
+            }
+                else
+                {
+                    if (k == 0)
+                    {
+                        temp2_x = temp_x + 200;
+                        temp2_y = temp_y - 150;
+                        k++;
+                    }
+                    g_b = new GroupBox
+                    {
+                        Name = "groupBox" + i.ToString(),
+                        Text = String.Empty,
+                        Location = new Point { X = temp2_x, Y = temp2_y },
+                        Width = 162,
+                        Height = 69
+                    };
+                    temp2_y = temp_y + 100;
+                }
+         
             g_b.Controls.AddRange(new Control[]
             {
             name1,name2,m_radio2,m_radio
@@ -112,24 +140,33 @@ namespace WindowsFormsApp1
              {
                   g_b
              });
+
+                if (smth<wrestlers.Count/4)
+                {
                 temp_x = g_b.Location.X;
                 temp_y = g_b.Location.Y + 100;
                 winers.RemoveAt(i);
                 winers.RemoveAt(i+i);
+                }
+                else
+                {
+                    winers.RemoveRange(0,winers.Count);
+                }
+
                 return;
             }
         }
-
-        private void metroButton1_Click(object sender, EventArgs e)
+        int smth = 0;
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
-            int smth = 0;
-           // if (smth==0)
-           // {
-           //     CheckWinners();
-           // }
             CheckWinners();
             NextStage(smth);
-            smth+=2;
+            smth++;
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

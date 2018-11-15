@@ -43,9 +43,9 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1367, 640);
+            this.metroPanel1.Size = new System.Drawing.Size(1327, 560);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -60,7 +60,7 @@
             this.metroButton1.TabIndex = 22;
             this.metroButton1.Text = "Next stage";
             this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // Form5
             // 
@@ -69,7 +69,7 @@
             this.ClientSize = new System.Drawing.Size(1367, 640);
             this.Controls.Add(this.metroPanel1);
             this.Name = "Form5";
-            this.Text = "Form5";
+            this.Load += new System.EventHandler(this.Form5_Load);
             this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

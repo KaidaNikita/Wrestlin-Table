@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,22 +15,35 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
 
-  
+
     public partial class Form1 : MetroForm
     {
- 
+
         public Form1()
         {
             InitializeComponent();
         }
-       static public List<Wrestler> wrestlers = new List<Wrestler>();
+
+        [Serializable]
+        public partial class SaveTable
+        {
+            public FlowLayoutPanel Temp_panel { get; set; }
+            public SaveTable() {}
+
+            public SaveTable(FlowLayoutPanel controls)
+            {
+                Temp_panel = controls;
+            }
+        }
+
+        static public List<Wrestler> wrestlers = new List<Wrestler>();
         public class Wrestler
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string City { get; set; }
         public string Lot { get; set; }
-
+           
             public Wrestler(){}
 
             public Wrestler(string name, string surname, string city, string lot)
@@ -38,7 +53,6 @@ namespace WindowsFormsApp1
                 City=city;
                 Lot =lot;
             }
-
     }
         public void GetAllWrestlers()
         {
@@ -117,10 +131,10 @@ namespace WindowsFormsApp1
             }
             return true;
         }
-        private void metroButton2_Click(object sender, EventArgs e)
+        private void MetroButton2_Click(object sender, EventArgs e)
         {
             wrestlers.Add(new Wrestler(textBox1.Text,textBox2.Text, textBox3.Text, textBox4.Text));
-
+                 toolStripStatusLabel1.Text = "Count of wreslers:"+wrestlers.Count.ToString();
             var m_textbox = new TextBox
             {
                 Text = textBox1.Text,
@@ -172,7 +186,9 @@ namespace WindowsFormsApp1
             {
                 Text = String.Empty,
                 Width = 350,
-                Height = 50
+                Height = 50,
+                Enabled=false
+                
             };
 
             g_b.Controls.AddRange(new Control[]{
@@ -189,8 +205,7 @@ namespace WindowsFormsApp1
             textBox4.Text = String.Empty;
         }
 
-
-        private void metroButton3_Click(object sender, EventArgs e)
+        private void MetroButton3_Click(object sender, EventArgs e)
         {
             try
             {
@@ -242,9 +257,27 @@ namespace WindowsFormsApp1
           }
                 else
                 {
-                    for (int i = 0; i < wrestlers.Count; i++)
+                    int k = 0;
+                    for (int i = 0; i < wrestlers.Count - 1; ++i)
                     {
-
+                        if (k==0)
+                        {
+                        for (int j = 0; j < wrestlers.Count - 1; ++j)
+                        {
+                            if (Int32.Parse(wrestlers[j + 1].Lot) < Int32.Parse(wrestlers[j].Lot))
+                            {
+                                tmp = wrestlers[j + 1];
+                                wrestlers[j + 1] = wrestlers[j];
+                                wrestlers[j] = tmp;
+                            }
+                        }
+                        }
+                      if (wrestlers.Count > 8 && wrestlers.Count < 16 || wrestlers.Count > 16 && i < 32)
+                        {
+                            free.Add(wrestlers[i]);
+                            k++;
+                        }
+                   
                     }
                 }
             }
@@ -255,7 +288,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void TextBox4_TextChanged(object sender, EventArgs e)
         {
             int number;
 
@@ -270,24 +303,59 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             Form2 form = new Form2();
             form.Show();
         }
 
-        private void metroButton1_Click_1(object sender, EventArgs e)
+        private void MetroButton1_Click_1(object sender, EventArgs e)
         {
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrintPage += PrintPageHandler;
             printDoc.Print();
         }
 
-        private void metroButton4_Click(object sender, EventArgs e)
+        private void MetroButton4_Click(object sender, EventArgs e)
         {
             SortWrestlers();
             GetAllWrestlers();
         }
+
+        private void MetroButton5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            SaveTable person = new SaveTable(flowLayoutPanel1);
+            BinaryFormatter binFormat = new BinaryFormatter();
+            using (Stream fStream = new FileStream("My_table.txt", FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                binFormat.Serialize(fStream, person);
+            }
+            }
+            catch (Exception){}
+
+        }
+
+        private void MetroButton6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("My_table.txt", FileMode.OpenOrCreate, FileAccess.Read))
+            {
+                SaveTable newTable = (SaveTable)formatter.Deserialize(fs);
+                flowLayoutPanel1 = newTable.Temp_panel;
+            }
+            }
+            catch (Exception){}
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Fill all blanks and press 'add wrestler' / When you fill all table press 'print table' to print tournament table / To remove wrestler from table press 'remove wrestler'");
+        }
+
     }
 
 

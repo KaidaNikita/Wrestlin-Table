@@ -10,17 +10,18 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using static WindowsFormsApp1.Form4;
+using MetroFramework.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Log_in : Form
+    public partial class Log_in : MetroForm
     {
         public Log_in()
         {
             InitializeComponent();
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             if (metroTextBox2.Text == "admin" && metroTextBox3.Text == "1234")
             {
@@ -39,11 +40,9 @@ namespace WindowsFormsApp1
                         if (metroTextBox3.Text==newPerson.Pass)
                         {
                             Form1 form = new Form1();
-                            form.Controls["groupBox2"].Enabled=false;
-                          //  form.Controls["flowLayoutPanel1"].Controls.AddRange(Controls[]
-                          //  {
-                          //
-                          //  })
+                            form.Controls["groupBox2"].Controls["metroButton3"].Enabled=false;
+                            form.Controls["groupBox2"].Controls["metroButton2"].Enabled = false;
+                            form.Controls["metroButton5"].Enabled = false;
                             form.ShowDialog();
                         }
                         else
